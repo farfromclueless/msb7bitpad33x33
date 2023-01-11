@@ -1,2 +1,4 @@
-# msb7bitpad33x33
-Sequence transformer
+# Sequence transformer
+
+RFC 5280, 4.2.1.6
+

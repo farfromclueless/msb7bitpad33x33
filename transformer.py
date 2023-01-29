@@ -3,17 +3,18 @@ import math
 
 
 IMAGE_IS_SQUARE = False
+SET_MEANS_WHITE = True
 
 
 def usage():
     print("""
     Usage:
 
-        $ python3 transform.py <hex-sequence>
+        $ python3 transformer.py <hex-sequence>
 
     E.g:
 
-        $ python3 transform.py '7a:23:45:23:21'
+        $ python3 transformer.py '7a:23:45:23:21'
     """)
 
 def parse_seq(seq):
@@ -31,7 +32,10 @@ def get_bits(byteseq):
         for bit in reversed(range(8)):
             yield (b >> bit) & 1
 
-pixel = [bytes((cp,cp)).decode('cp437') for cp in (255,219)]
+if SET_MEANS_WHITE: pxcodes = (219,255)
+else: pxcodes = (255,219)
+pixel = [bytes((cp,cp)).decode('cp437') for cp in pxcodes]
+
 def bit_to_ascii_pixel(bit):
     return pixel[bit]
 
